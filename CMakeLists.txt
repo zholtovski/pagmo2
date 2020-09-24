@@ -304,8 +304,8 @@ if(PAGMO_WITH_NLOPT)
     # function from the library in the public headers.
     # Thus, depend publicly on the header,
     # privately on the compiled library.
-    target_link_libraries(pagmo PUBLIC Nlopt ${CONAN_LIBS})
-    target_link_libraries(pagmo PRIVATE Nlopt ${CONAN_LIBS})
+    target_link_libraries(pagmo PUBLIC nlopt)
+    target_link_libraries(pagmo PRIVATE nlopt)
     set(PAGMO_ENABLE_NLOPT "#define PAGMO_WITH_NLOPT")
 endif()
 
