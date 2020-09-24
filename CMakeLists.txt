@@ -99,12 +99,12 @@ endif()
 
 # NLopt
 if(PAGMO_WITH_NLOPT)
-    find_package(NLOPT REQUIRED COMPONENTS header libnlopt)
+    find_package(Nlopt REQUIRED)
 endif()
 
 # Ipopt
 if(PAGMO_WITH_IPOPT)
-    find_package(IPOPT REQUIRED COMPONENTS header libipopt)
+    find_package(Ipopt REQUIRED)
 endif()
 
 if(PAGMO_BUILD_TESTS)
@@ -293,7 +293,7 @@ target_link_libraries(pagmo PRIVATE TBB::tbb)
 
 if(PAGMO_WITH_EIGEN3)
     # Link pagmo to eigen3.
-    target_link_libraries(pagmo PUBLIC Eigen3::eigen3)
+    target_link_libraries(pagmo PUBLIC Eigen3::Eigen)
     set(PAGMO_ENABLE_EIGEN3 "#define PAGMO_WITH_EIGEN3")
 endif()
 
@@ -304,8 +304,8 @@ if(PAGMO_WITH_NLOPT)
     # function from the library in the public headers.
     # Thus, depend publicly on the header,
     # privately on the compiled library.
-    target_link_libraries(pagmo PUBLIC NLOPT::header)
-    target_link_libraries(pagmo PRIVATE NLOPT::libnlopt)
+    target_link_libraries(pagmo PUBLIC Nlopt)
+    target_link_libraries(pagmo PRIVATE Nlopt)
     set(PAGMO_ENABLE_NLOPT "#define PAGMO_WITH_NLOPT")
 endif()
 
@@ -316,8 +316,8 @@ if(PAGMO_WITH_IPOPT)
     # function from the library in the public headers.
     # Thus, depend publicly on the header,
     # privately on the compiled library.
-    target_link_libraries(pagmo PUBLIC IPOPT::header)
-    target_link_libraries(pagmo PRIVATE IPOPT::libipopt)
+    target_link_libraries(pagmo PUBLIC Ipopt)
+    target_link_libraries(pagmo PRIVATE Ipopt)
     set(PAGMO_ENABLE_IPOPT "#define PAGMO_WITH_IPOPT")
 endif()
 
@@ -369,10 +369,10 @@ if(PAGMO_WITH_EIGEN3)
     set(_PAGMO_CONFIG_OPTIONAL_DEPS "${_PAGMO_CONFIG_OPTIONAL_DEPS}find_package(Eigen3 REQUIRED)\n")
 endif()
 if(PAGMO_WITH_NLOPT)
-    set(_PAGMO_CONFIG_OPTIONAL_DEPS "${_PAGMO_CONFIG_OPTIONAL_DEPS}find_package(NLOPT REQUIRED COMPONENTS header)\n")
+    set(_PAGMO_CONFIG_OPTIONAL_DEPS "${_PAGMO_CONFIG_OPTIONAL_DEPS}find_package(Nlopt REQUIRED)\n")
 endif()
 if(PAGMO_WITH_IPOPT)
-    set(_PAGMO_CONFIG_OPTIONAL_DEPS "${_PAGMO_CONFIG_OPTIONAL_DEPS}find_package(IPOPT REQUIRED COMPONENTS header)\n")
+    set(_PAGMO_CONFIG_OPTIONAL_DEPS "${_PAGMO_CONFIG_OPTIONAL_DEPS}find_package(Ipopt REQUIRED)\n")
 endif()
 
 configure_file("${CMAKE_CURRENT_SOURCE_DIR}/pagmo-config.cmake.in" "${CMAKE_CURRENT_BINARY_DIR}/pagmo-config.cmake" @ONLY)
