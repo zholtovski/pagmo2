@@ -283,7 +283,7 @@ target_include_directories(pagmo PUBLIC
 target_link_libraries(pagmo PUBLIC Threads::Threads)
 
 # Boost.
-target_link_libraries(pagmo PUBLIC Boost::boost Boost::boost_serialization)
+target_link_libraries(pagmo PUBLIC Boost::boost CONAN_LIB::Boost_boost_serialization)
 
 # TBB.
 # NOTE: TBB is a private dependency because

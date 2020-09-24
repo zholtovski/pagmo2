@@ -41,17 +41,17 @@ if(NOT TARGET Boost::disable_autolinking)
     endif()
 endif()
 foreach(_PAGMO_BOOST_COMPONENT ${_PAGMO_REQUIRED_BOOST_LIBS})
-    if(NOT TARGET Boost::${_PAGMO_BOOST_COMPONENT})
-        message(STATUS "The 'Boost::${_PAGMO_BOOST_COMPONENT}' imported target is missing, creating it.")
+    if(NOT TARGET CONAN_LIB::Boost_${_PAGMO_BOOST_COMPONENT})
+        message(STATUS "The 'CONAN_LIB::Boost_${_PAGMO_BOOST_COMPONENT}' imported target is missing, creating it.")
         string(TOUPPER ${_PAGMO_BOOST_COMPONENT} _PAGMO_BOOST_UPPER_COMPONENT)
         if(Boost_USE_STATIC_LIBS)
-            add_library(Boost::${_PAGMO_BOOST_COMPONENT} STATIC IMPORTED)
+            add_library(CONAN_LIB::Boost_${_PAGMO_BOOST_COMPONENT} STATIC IMPORTED)
         else()
-            add_library(Boost::${_PAGMO_BOOST_COMPONENT} UNKNOWN IMPORTED)
+            add_library(CONAN_LIB::Boost_${_PAGMO_BOOST_COMPONENT} UNKNOWN IMPORTED)
         endif()
-        set_target_properties(Boost::${_PAGMO_BOOST_COMPONENT} PROPERTIES
+        set_target_properties(CONAN_LIB::Boost_${_PAGMO_BOOST_COMPONENT} PROPERTIES
             INTERFACE_INCLUDE_DIRECTORIES "${Boost_INCLUDE_DIRS}")
-        set_target_properties(Boost::${_PAGMO_BOOST_COMPONENT} PROPERTIES
+        set_target_properties(CONAN_LIB::Boost_${_PAGMO_BOOST_COMPONENT} PROPERTIES
             IMPORTED_LINK_INTERFACE_LANGUAGES "CXX"
             IMPORTED_LOCATION "${Boost_${_PAGMO_BOOST_UPPER_COMPONENT}_LIBRARY}")
     endif()
