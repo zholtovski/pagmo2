@@ -3,7 +3,7 @@
 set(_PAGMO_BOOST_MINIMUM_VERSION 1.60.0)
 find_package(Boost ${_PAGMO_BOOST_MINIMUM_VERSION} QUIET REQUIRED)
 
-set(_PAGMO_REQUIRED_BOOST_LIBS serialization)
+set(_PAGMO_REQUIRED_BOOST_LIBS boost_serialization)
 
 # Add the unit test framework, if needed.
 if(_PAGMO_FIND_BOOST_UNIT_TEST_FRAMEWORK)
