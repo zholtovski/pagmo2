@@ -99,7 +99,7 @@ endif()
 
 # NLopt
 if(PAGMO_WITH_NLOPT)
-    find_package(Nlopt REQUIRED)
+    find_package(NLopt REQUIRED)
 endif()
 
 # Ipopt
@@ -304,8 +304,8 @@ if(PAGMO_WITH_NLOPT)
     # function from the library in the public headers.
     # Thus, depend publicly on the header,
     # privately on the compiled library.
-    target_link_libraries(pagmo PUBLIC nlopt)
-    target_link_libraries(pagmo PRIVATE nlopt)
+    target_link_libraries(pagmo PUBLIC NLopt::nlopt)
+    target_link_libraries(pagmo PRIVATE NLopt::nlopt)
     set(PAGMO_ENABLE_NLOPT "#define PAGMO_WITH_NLOPT")
 endif()
 
@@ -369,7 +369,7 @@ if(PAGMO_WITH_EIGEN3)
     set(_PAGMO_CONFIG_OPTIONAL_DEPS "${_PAGMO_CONFIG_OPTIONAL_DEPS}find_package(Eigen3 REQUIRED)\n")
 endif()
 if(PAGMO_WITH_NLOPT)
-    set(_PAGMO_CONFIG_OPTIONAL_DEPS "${_PAGMO_CONFIG_OPTIONAL_DEPS}find_package(Nlopt REQUIRED)\n")
+    set(_PAGMO_CONFIG_OPTIONAL_DEPS "${_PAGMO_CONFIG_OPTIONAL_DEPS}find_package(NLopt REQUIRED)\n")
 endif()
 if(PAGMO_WITH_IPOPT)
     set(_PAGMO_CONFIG_OPTIONAL_DEPS "${_PAGMO_CONFIG_OPTIONAL_DEPS}find_package(Ipopt REQUIRED)\n")
